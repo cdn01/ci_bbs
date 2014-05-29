@@ -108,7 +108,6 @@ class SB_Controller extends Base_Controller
 		
 		//全局输出
 		$this->load->vars($data);
-
 /*		//load GoCart library
 		$this->load->library('Go_cart');
 		//load needed models

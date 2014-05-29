@@ -56,7 +56,10 @@ class Home extends SB_Controller
 
 		//links
 		$data['links']=$this->link_m->get_latest_links();
-
+		
+		$this->load->helper("iswap");
+		$data['iswap'] = iswap();
+		
 		//action
 		$data['action'] = 'home';
 		$this->load->view('home',$data);
@@ -106,7 +109,8 @@ class Home extends SB_Controller
 				$data['list'][$k]['flist_url']=str_replace('(:num)', $v['cid'], $data['flist_url'][0]);
 			}
 		}
-		
+		$this->load->helper("iswap");
+		$data['iswap'] = iswap();
 		//$data['category'] = $this->cate_m->get_category_by_cid($cid);
 		$this->load->view('getmore', $data);
 	}

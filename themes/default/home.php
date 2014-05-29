@@ -25,7 +25,7 @@
 <div class='bigger welcome'><?php echo $settings['welcome_tip']?></div>
 <?php if(!$this->session->userdata('uid')){?>
 <div class='sep10'></div>
-<div class="jumbotron"><h1><?php echo $settings['site_name']?></h1><p><?php echo $settings['short_intro']?></p></div>
+<div class="jumbotron"><?php echo $settings['site_name']?><p><?php echo $settings['short_intro']?></p></div>
 <?php }?>
 </div>
 <span id="infolist">
@@ -43,15 +43,17 @@
 </div>
 <div class='item_title'>
 <div class='pull-right'>
-<div class='badge badge-info'><a href="<?php echo site_url($v['view_url'].'#reply');?>">浏览:<?php echo $v['views']?></a></div>
+<div class='badge badge-info'><a href="<?php echo site_url($v['view_url'].'#reply');?>"><?php if(!$iswap){?>浏览:<?php }?><?php echo $v['views']?></a></div>
 </div>
 <h2 class='topic_title'>
 <a href="<?php echo site_url($v['view_url']);?>" class="startbbs topic"><?php echo $v['title']/*sb_substr($v['title'],30)*/;?></a>
 <?php if( $v['is_top'] == '1' ) echo '<span class="badge badge-info">置顶</span>'; ?>
 </h2>
+<?php if(!$iswap){?>
 <div class='topic_summary'>
 <?php echo $v['summary'];?> 
 </div>
+<?php }?>
 <div class='topic-meta'>
 <a href="<?php echo site_url($v['flist_url']);?>" class="node"><?php echo $v['cname']?></a>
 <span class='text-muted'>•</span>

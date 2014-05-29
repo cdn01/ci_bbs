@@ -55,7 +55,8 @@ class Forum extends SB_controller
 			
 			$data['category'] = $this->cate_m->get_category_by_cid($cid);
 			$data['title'] = strip_tags($data['category']['cname']);
-			 
+			$this->load->helper("iswap");
+			$data['iswap'] = iswap();
 			$this->load->view('flist', $data);
 		}
 
