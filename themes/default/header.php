@@ -14,8 +14,12 @@
 
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li<?php if(@$action=='home'){?> class="active"<?php }?>><a href="<?php echo site_url()?>"><?php echo lang('front_home');?></a></li>
-            <li<?php if(@$action=='section'){?> class="active"<?php }?>><a href="<?php echo site_url('section')?>">节点</a></li>
+            <li <?php if(@$category['cid']=='1'){?> class="active"<?php }?>><a href="<?php echo site_url('forum/flist/1');?>">推荐</a></li>
+            <li <?php if(@$category['cid']=='2'){?> class="active"<?php }?>><a href="<?php echo site_url('forum/flist/2');?>">娱乐</a></li>
+            <li <?php if(@$category['cid']=='3'){?> class="active"<?php }?>><a href="<?php echo site_url('forum/flist/3');?>">体育</a></li>
+            <li <?php if(@$category['cid']=='4'){?> class="active"<?php }?>><a href="<?php echo site_url('forum/flist/4');?>">文化</a></li>
+            <li <?php if(@$category['cid']=='5'){?> class="active"<?php }?>><a href="<?php echo site_url('forum/flist/5');?>">时尚</a></li>
+            <li <?php if(@$category['cid']=='6'){?> class="active"<?php }?>><a href="<?php echo site_url('forum/flist/6');?>">佛学</a></li>
             <li<?php if(@$action=='user'){?> class="active"<?php }?>><a href="<?php echo site_url('user')?>">会员</a></li>
             <li<?php if(@$action=='add'){?> class="active"<?php }?>><a href="<?php echo site_url('forum/add')?>">发表</a></li>
             <!--<li class="dropdown">
