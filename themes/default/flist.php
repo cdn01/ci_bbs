@@ -55,7 +55,7 @@
 </div>
 <div class='item_title'>
 <div class='pull-right'>
-<div class='badge badge-info'><a href="<?php echo site_url($v['view_url'].'#reply');?>"><?php echo $v['comments']?></a></div>
+<div class='badge badge-info'><a href="<?php echo site_url($v['view_url'].'#reply');?>">浏览:<?php echo $v['views']?></a></div>
 </div>
 <h2 class='topic_title'>
 <a href="<?php echo site_url($v['view_url']);?>" class="startbbs topic"><?php echo $v['title']/*sb_substr($v['title'],30)*/;?></a>

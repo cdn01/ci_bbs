@@ -33,7 +33,6 @@ class Forum extends SB_controller
 			$config['first_link'] ='首页';
 			$config['last_link'] ='尾页';
 			$config['num_links'] = 10;
-			
 			$this->load->library('pagination');
 			$this->pagination->initialize($config);
 			
@@ -56,8 +55,7 @@ class Forum extends SB_controller
 			
 			$data['category'] = $this->cate_m->get_category_by_cid($cid);
 			$data['title'] = strip_tags($data['category']['cname']);
-			
-			print_r($data);
+			 
 			$this->load->view('flist', $data);
 		}
 

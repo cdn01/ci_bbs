@@ -150,6 +150,7 @@ function insertDB($table,$data,$type='single'){
 			$sql = 'INSERT INTO ' . $table . ' (' . implode(', ', $key) . ') VALUES ("' . implode('"), ("', $val) . '");';
 			break;
 	}
+	println($sql);
 	mysql_query($sql);
 	return  mysql_insert_id();
 }

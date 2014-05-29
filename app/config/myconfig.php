@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $config = array (
-  'site_name' => 'StartBBS- 起点开源论坛-烧饼bbs',
+  'site_name' => '烧饼bbs-大家都爱看微论坛',
   'index_page' => '',
   'show_captcha' => 'off',
   'show_editor' => 'on',
@@ -11,7 +11,7 @@ $config = array (
   'version' => false,
   'static' => 'white',
   'themes' => 'default',
-  'logo' => 'Start<span class=\'green\'>BBS</span>',
+  'logo' => '烧饼<span class=\'green\'>BBS</span>',
   'auto_tag' => 'on',
   'encryption_key' => 'bf98a5414713321a16fdcbeff28432e1',
 );

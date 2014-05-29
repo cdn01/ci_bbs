@@ -48,6 +48,7 @@ foreach ($talk as $t){
 	$url = "http://icare.qq.com/dj/djakMessageRelay.php?id=".$t['wbid']."&apiType=16&apiHost=http%3A%2F%2Fapi.t.qq.com";
 	$comments = json_decode(html($url),true);
 	$pid = insertContent($content["info"]);
+	 
 	replyMessage($comments['replyMessage'],$pid);
 	sleep(3);
 }
