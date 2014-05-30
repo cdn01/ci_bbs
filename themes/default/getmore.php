@@ -1,7 +1,7 @@
 <?php if($list) foreach ($list as $v){?>
 <div class='cell topic'>
 <div class='avatar pull-left'>
-<a href="<?php echo site_url('user/info/'.$v['uid']);?>" class="profile_link" title="<?php echo $v['username']?>">
+<a href="<?php if(!$iswap){ echo site_url('user/info/'.$v['uid']);}else{echo site_url($v['view_url']);}?>" class="profile_link" title="<?php echo $v['username']?>">
 <?php if($v['picshow']){?>
 <img alt="<?php echo $v['username']?> medium avatar" src="<?php echo $v['picshow']/*base_url($v['avatar'])*/ ;?>"/>
 <?php } else{?>
@@ -28,7 +28,7 @@
 <a href="<?php echo site_url('user/info/'.$v['uid']);?>" class="dark startbbs profile_link" title="<?php echo $v['username']?>"><?php echo $v['username']?></a>
 <span class='text-muted'>•</span>
 <?php echo $this->myclass->friendly_date($v['updatetime'])?>
-<span class='text-muted'>•</span>
+<span class='text-muted'>•</span> 
 <?php if($v['rname']){?>
 最后回复来自
 <a href="<?php echo site_url('user/info/'.$v['ruid']);?>" class="startbbs profile_link" title="<?php echo $v['rname']?>"><?php echo $v['rname']?></a>

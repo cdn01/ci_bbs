@@ -70,9 +70,14 @@ if($insert_data["title"]&&$insert_data["content"]&&$insert_data["summary"]){
 					println($user);
 					$u_id = insertDB("stb_users",$user);
 					$user["uid"] = $u_id;
+					$sql = "update stb_users set avatar	 = 'avatars/".($u_id%2059).".jpg' where uid ='".$user['uid']."'";
+					mysql_query($sql);
 				}else{
 					$user = $user[0];
+					$sql = "update stb_users set replies = replies +1 where uid ='".$user['uid']."'";
+					mysql_query($sql);
 				}
+				
 				$rtime = time()-rand(($k+10)*100,($k+30)*100);
 				$comments = array(
 				"fid"=>$insert_id,

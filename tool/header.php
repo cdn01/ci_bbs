@@ -3,6 +3,7 @@ header ( "Content-type:text/html;charset=utf-8" );
 $conn = mysql_connect ( "localhost", "root", "" );
 mysql_select_db ( "startbbs", $conn );
 mysql_query ( "set names utf8" );
+println(date("Y-m-d H:i:s",time()));
 function query($sql) {
 	$cmd = mysql_query ( $sql );
 	$result = array ();
@@ -160,3 +161,51 @@ function str_format($str){
 	$str = preg_replace("/<\/?a(.*)>/iUs", "", $str);
 	return $str;
 }
+
+
+function insertContent($t){
+	global $category,$type;
+	if(empty($t['akdata']['title'])) return  -1;
+	$pic_arr = "";
+	if(!empty($t['wbdata']['pic'])&&isset($t['wbdata']['pic'])){
+		foreach ($t['wbdata']['pic'] as $p){
+			$pic_arr .= "<p><img src='".$p."/460' /></p>";
+		}
+	}
+	$video = "";
+	if(!empty($t['wbdata']['video'])&&isset($t['wbdata']['video'])){
+		$video = $t['wbdata']['video'];
+	}
+	$content = str_format($t['wbdata']['content']);
+	$sql = "insert into qqwb (categoryid,pic_arr,content,hot,qid,img,summary,timestamp,title,wbid,picshow,video) 
+	values ('".$category[$type]."','".str_conv($pic_arr)."','".str_conv($content)."','{$t['akdata']['hot']}','{$t['akdata']['id']}','{$t['akdata']['img']}',
+	'".str_conv($t['akdata']['summary'])."','{$t['akdata']['timestamp']}','".str_conv($t['akdata']['title'])."','{$t['akdata']['wbid']}',
+	'{$t['akdata']['img']}','{$video}')";
+	mysql_query($sql);
+	return mysql_insert_id();
+}
+
+function replyMessage($comments,$qid){
+	if($qid<1) return ;
+	$sql = "select * from qqwb_comments where qid='".$qid."' ";
+	$comment = query($sql);
+	if($comment) return ;
+	foreach ($comments as $c){
+		if(!empty($c)&&isset($c)){
+			$sql = "insert into qqwb_comments (account,content,mid,nick,time,qid) values (
+			'".str_conv($c['account'])."','".str_conv(str_format($c['content']))."','{$c['mid']}','".str_conv($c['nick'])."','{$c['time']}','{$qid}')";
+			mysql_query($sql);
+		}
+	}
+}
+
+
+/*推荐
+娱乐
+体育
+文化
+时尚
+佛学
+世界杯
+*/
+$category = array(1=>"1",2=>"2",4=>"3",5=>"4",3=>"5",7=>"6",11=>"7");
